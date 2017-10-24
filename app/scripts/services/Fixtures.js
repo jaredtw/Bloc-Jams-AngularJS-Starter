@@ -39,12 +39,12 @@
           var collection = [];
           for (var i=0; i<numberOfAlbums; i++){
               collection.push(albumPicasso);
-          }
+          };
           return collection;
         };
 
          return Fixtures;
-     }
+     };
 
      angular
          .module('blocJams')
