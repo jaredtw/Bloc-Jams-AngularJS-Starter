@@ -43,6 +43,16 @@
         };
 
         /**
+        * @function stopSong
+        * @desc stops the current song(currentBuzzObject) and makes song object null/false
+        * @param {object} song
+        */
+        var stopSong = function(song) {
+            currentBuzzObject.stop();
+            song.playing = null;
+        };
+
+        /**
          *@function getSongIndex
          *@desc private method to get index of a song from an array of songs
          *@param {object} index
@@ -97,8 +107,25 @@
             currentSongIndex--;
 
             if (currentSongIndex < 0) {
-                currentBuzzObject.stop();
-                SongPlayer.currentSong.playing = null;
+                stopSong(SongPlayer.currentSong);
+            } else {
+                var song = currentAlbum.songs[currentSongIndex];
+                setSong(song);
+                playSong(song);
+            }
+        };
+
+        /**
+        * @function SongPlayer.next
+        * @desc tracks through index of song and adds one to get the next song in currentAlbum.songs, then sets it as the playing song
+        * @param {object} song(index)
+        */
+        SongPlayer.next = function() {
+            var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+            currentSongIndex++;
+
+            if (currentSongIndex === currentAlbum.songs.length) {
+                stopSong(SongPlayer.currentSong);
             } else {
                 var song = currentAlbum.songs[currentSongIndex];
                 setSong(song);
