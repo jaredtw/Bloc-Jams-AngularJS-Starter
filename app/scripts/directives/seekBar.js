@@ -13,7 +13,7 @@
         return {
             templateUrl: '/templates/directives/seek_bar.html',
             replace: true,
-            restrict: E
+            restrict: 'E',
             scope: { },
             link: function(scope, element, attributes) {
                 scope.value = 0;
@@ -27,9 +27,18 @@
                     var percent = value / max * 100;
                     return percent + "%";
                 };
+
                 scope.fillStyle = function () {
-                    return {width: percentString()};
+                    return {
+                      width: percentString()
+                    };
                 };
+
+                scope.thumbStyle = function () {
+                    return {
+                        left: percentString()
+                    };
+                }
 
                 scope.onClickSeekBar = function(event) {
                     var percent = calculatePercent(seekBar, event);
