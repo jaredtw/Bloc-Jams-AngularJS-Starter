@@ -48,6 +48,11 @@
             song.playing = true;
         };
 
+        var StopSong = function (song) {
+            currentBuzzObject.stop();
+            song.playing = null;
+        }
+
         /**
          *@function getSongIndex
          *@desc private method to get index of a song from an array of songs
@@ -68,6 +73,7 @@
         */
         SongPlayer.currentTime = null;
 
+        SongPlayer.volume = 60;
         /**
         * @function SongPlayer.play
         * @desc Public method that takes a song object parameter. If the buzz object Song is not the same as the current
@@ -139,6 +145,13 @@
               if (currentBuzzObject) {
                   currentBuzzObject.setTime(time);
               }
+          };
+
+          SongPlayer.setVolume = function (volume) {
+              if (currentBuzzObject) {
+                currentBuzzObject.setVolume(volume);
+              }
+              SongPlayer.volume = volume;
           };
 
         return SongPlayer;
