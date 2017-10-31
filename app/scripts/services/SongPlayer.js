@@ -123,6 +123,7 @@
             }
         };
 
+<<<<<<< HEAD
         SongPlayer.next = function () {
               var currentSongIndex = getSongIndex(SongPlayer.currentSong);
               currentSongIndex++;
@@ -153,6 +154,20 @@
               }
               SongPlayer.volume = volume;
           };
+=======
+        SongPlayer.next = function() {
+            var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+                currentSongIndex++;
+
+                if (currentSongIndex === currentAlbum.songs.length) {
+                    stopSong(SongPlayer.currentSong);
+                } else {
+                    var song = currentAlbum.songs[currentSongIndex];
+                    setSong(song);
+                    playSong(song);
+                }
+        };
+>>>>>>> checkpoint-9-assign
 
         return SongPlayer;
     }
