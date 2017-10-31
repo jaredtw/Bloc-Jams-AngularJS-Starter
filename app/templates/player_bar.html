@@ -19,13 +19,13 @@
             </a>
         </div>
         <div class="control-group currently-playing">
-            <h2 class="song-name">{{ playerBar.songPlayer.currentSong.name }}</h2>
-            <h2 class="artist-song-mobile">{{ playerBar.songPlayer.currentSong.name }}</h2>
-            <h3 class="artist-name">{{ playerBar.albumData.artist }}</h3>
+            <h2 class="song-name" ng-show="playerBar.songPlayer.currentSong.playing">{{ playerBar.songPlayer.currentSong.name }}</h2>
+            <h2 class="artist-song-mobile" ng-show="playerBar.songPlayer.currentSong.playing">{{ playerBar.songPlayer.currentSong.name }}</h2>
+            <h3 class="artist-name" ng-show="playerBar.songPlayer.currentSong.playing">{{ playerBar.albumData.artist }}</h3>
             <div class="seek-control">
                 <seek-bar></seek-bar>
                 <div class="current-time"></div>
-                <div class="total-time">{{ playerBar.songPlayer.currentSong.length }}</div>
+                <div class="total-time" ng-show="playerBar.songPlayer.currentSong.playing">{{ playerBar.songPlayer.currentSong.length }}</div>
             </div>
         </div>
         <div class="control-group volume">
